@@ -7,13 +7,13 @@ public class PlayerMovements : MonoBehaviour {
     public Rigidbody rb;
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
-	// Use this for initialization
+
 	void Start () {
 
         
 	}
 	
-	// Update is called once per frame
+    //Show this on Git :)
 	void FixedUpdate () {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
