@@ -8,15 +8,18 @@ public class PlayerMovements : MonoBehaviour {
     public float forwardForce = 2000f;
     public float sidewaysForce = 500f;
     public float upwardForce = 600f;
-
+    public Collision collisionInfo = new Collision();
     void Start () {
 
         
 	}
 	
-    //Show this on Git :)
 	void FixedUpdate () {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
+
+        
+        
+        
 
         if (Input.GetKey("d"))
         {
@@ -32,5 +35,19 @@ public class PlayerMovements : MonoBehaviour {
         {
             rb.AddForce(new Vector3(0, upwardForce * Time.deltaTime, 0), ForceMode.Impulse);
         }
+    }
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if(collisionInfo.collider.tag == "Ramps")
+        {
+            Debug.Log("We hit a ramp");
+
+            Physics.gravity = new Vector3(0, -1F, 0);
+        }
+        else
+        {
+            Physics.gravity = new Vector3(0, -20F, 0);
+        }
+
     }
 }
