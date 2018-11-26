@@ -10,15 +10,27 @@ public class PlayerMovements : MonoBehaviour {
     public float upwardForce = 600f;
     public Collision collisionInfo = new Collision();
     void Start () {
-
         
-	}
+
+    }
 	
 	void FixedUpdate () {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
 
-        
-        
+        transform.rotation = Quaternion.Euler(0, 0, 0);     // doesn't rotate
+
+        if (rb.position.y > 2)
+        {
+            
+            rb.mass = 3;
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);     // doesn't rotate
+            rb.drag = 0;
+            rb.mass = 1;
+        }
+
         
 
         if (Input.GetKey("d"))
@@ -36,18 +48,6 @@ public class PlayerMovements : MonoBehaviour {
             rb.AddForce(new Vector3(0, upwardForce * Time.deltaTime, 0), ForceMode.Impulse);
         }
     }
-    void OnCollisionEnter(Collision collisionInfo)
-    {
-        if(collisionInfo.collider.tag == "Ramps")
-        {
-            Debug.Log("We hit a ramp");
+  
 
-            Physics.gravity = new Vector3(0, -1F, 0);
-        }
-        else
-        {
-            Physics.gravity = new Vector3(0, -20F, 0);
-        }
-
-    }
 }
