@@ -2,7 +2,7 @@
 
 public class PlayerCollision : MonoBehaviour {
 
-    public PlayerMovements movements;
+    public v2MovementScript movements;
 
     void OnCollisionEnter (Collision collisionInfo)
     {
