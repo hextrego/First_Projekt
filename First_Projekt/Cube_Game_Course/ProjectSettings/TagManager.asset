@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Ramps
   - Ground
+  - Elevator
   layers:
   - Default
   - TransparentFX
