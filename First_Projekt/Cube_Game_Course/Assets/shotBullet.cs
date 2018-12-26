@@ -25,6 +25,6 @@ public class shotBullet : MonoBehaviour {
     {
         Rigidbody bulletClone;
             bulletClone = Instantiate(bulletObjekt, barrelEnd.position, barrelEnd.rotation) as Rigidbody;
-        bulletClone.AddForce(barrelEnd.forward * bulletSpeed);
+        bulletClone.AddForce(barrelEnd.forward * bulletSpeed * Time.deltaTime);
     }
 }
