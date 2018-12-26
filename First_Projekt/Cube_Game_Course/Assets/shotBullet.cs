@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class shotBullet : MonoBehaviour {
     public float bulletSpeed = 10;
-    public Rigidbody bullet;
-    public GameObject bulletObj;
+    public Rigidbody bulletObjekt;
+    public Transform barrelEnd;
     // Use this for initialization
     void Start () {
 		
@@ -23,7 +23,8 @@ public class shotBullet : MonoBehaviour {
 
     void Fire()
     {
-        Rigidbody bulletClone = (Rigidbody)Instantiate(bullet, transform.position, transform.rotation);
-        bulletClone.velocity = bulletObj.transform.forward * bulletSpeed;
+        Rigidbody bulletClone;
+            bulletClone = Instantiate(bulletObjekt, barrelEnd.position, barrelEnd.rotation) as Rigidbody;
+        bulletClone.AddForce(barrelEnd.forward * bulletSpeed);
     }
 }
